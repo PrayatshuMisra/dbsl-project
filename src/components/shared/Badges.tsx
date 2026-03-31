@@ -12,22 +12,22 @@ const gradeColors: Record<string, string> = {
 export function GradeBadge({ grade }: { grade: GradeValue }) {
   if (!grade) return <span className="text-sm text-muted-foreground">—</span>;
   return (
-    <span className={cn('inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-bold', gradeColors[grade] || 'bg-muted text-muted-foreground')}>
+    <span className={cn('inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-bold tracking-tight border border-current/10', gradeColors[grade] || 'bg-muted text-muted-foreground')}>
       {grade}
     </span>
   );
 }
 
 const statusColors: Record<EnrollmentStatus, string> = {
-  pending: 'bg-warning/15 text-warning',
-  approved: 'bg-success/15 text-success',
-  rejected: 'bg-destructive/15 text-destructive',
-  withdrawn: 'bg-muted text-muted-foreground',
+  pending: 'bg-warning/10 text-warning border-warning/20',
+  approved: 'bg-success/10 text-success border-success/20',
+  rejected: 'bg-destructive/10 text-destructive border-destructive/20',
+  withdrawn: 'bg-muted text-muted-foreground border-border',
 };
 
 export function StatusBadge({ status }: { status: EnrollmentStatus }) {
   return (
-    <span className={cn('inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold capitalize', statusColors[status])}>
+    <span className={cn('inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border', statusColors[status])}>
       {status}
     </span>
   );
@@ -35,7 +35,7 @@ export function StatusBadge({ status }: { status: EnrollmentStatus }) {
 
 export function ActiveBadge({ active }: { active: boolean }) {
   return (
-    <span className={cn('inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold', active ? 'bg-success/15 text-success' : 'bg-muted text-muted-foreground')}>
+    <span className={cn('inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider border', active ? 'bg-success/10 text-success border-success/20' : 'bg-muted/50 text-muted-foreground border-border')}>
       {active ? 'Active' : 'Inactive'}
     </span>
   );

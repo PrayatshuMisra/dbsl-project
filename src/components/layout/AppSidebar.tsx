@@ -58,23 +58,23 @@ export function AppSidebar() {
   const initials = user?.full_name?.split(' ').map(n => n[0]).join('').slice(0, 2) || 'U';
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader className="p-4">
+    <Sidebar collapsible="icon" className="border-r border-white/10 glass-panel shadow-premium">
+      <SidebarHeader className="p-5 border-b border-white/5">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-primary">
-            <GraduationCap className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white p-1.5 shadow-lg ring-1 ring-white/20">
+            <img src="/mit-symb.jpg" alt="MIT Manipal Emblem" className="h-full w-full object-contain" />
           </div>
           {!collapsed && (
-            <div>
-              <h2 className="text-sm font-bold font-display">AcademIQ</h2>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wider">{roleLabel}</p>
+            <div className="animate-fade-in">
+              <h2 className="text-base font-extrabold font-display tracking-tight text-white leading-none">MIT MANIPAL</h2>
+              <p className="text-[9px] text-white/70 font-bold uppercase tracking-[0.2em] mt-1.5 leading-none">{roleLabel}</p>
             </div>
           )}
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel>Main Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-[11px] font-bold uppercase tracking-wider text-muted-foreground/70">Main Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {roleNav.map((item) => (
@@ -82,13 +82,15 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     onClick={() => navigate(item.url)}
                     className={cn(
-                      'rounded-xl transition-colors',
-                      isActive(item.url) && 'bg-primary/10 text-primary font-medium'
+                      'rounded-lg transition-all duration-200 h-10 px-3',
+                      isActive(item.url) 
+                        ? 'bg-primary/10 text-primary font-semibold shadow-soft' 
+                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
                     )}
                     tooltip={item.title}
                   >
-                    <item.icon className="h-4 w-4" />
-                    {!collapsed && <span>{item.title}</span>}
+                    <item.icon className={cn("h-4 w-4 shrink-0 transition-colors", isActive(item.url) ? "text-primary" : "text-muted-foreground")} />
+                    {!collapsed && <span className="ml-3 text-sm">{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -96,7 +98,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>General</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-3 text-[11px] font-bold uppercase tracking-wider text-muted-foreground/70">General</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {commonNav.map((item) => (
@@ -104,13 +106,15 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     onClick={() => navigate(item.url)}
                     className={cn(
-                      'rounded-xl transition-colors',
-                      isActive(item.url) && 'bg-primary/10 text-primary font-medium'
+                      'rounded-lg transition-all duration-200 h-10 px-3',
+                      isActive(item.url) 
+                        ? 'bg-primary/10 text-primary font-semibold shadow-soft' 
+                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
                     )}
                     tooltip={item.title}
                   >
-                    <item.icon className="h-4 w-4" />
-                    {!collapsed && <span>{item.title}</span>}
+                    <item.icon className={cn("h-4 w-4 shrink-0 transition-colors", isActive(item.url) ? "text-primary" : "text-muted-foreground")} />
+                    {!collapsed && <span className="ml-3 text-sm">{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -118,14 +122,14 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4">
+      <SidebarFooter className="p-4 border-t border-border/40">
         <SidebarMenuButton
           onClick={() => { logout(); navigate('/login'); }}
-          className="rounded-xl text-muted-foreground hover:text-destructive"
+          className="rounded-lg text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors h-10 px-3"
           tooltip="Log out"
         >
-          <LogOut className="h-4 w-4" />
-          {!collapsed && <span>Log out</span>}
+          <LogOut className="h-4 w-4 shrink-0" />
+          {!collapsed && <span className="ml-3 text-sm font-medium">Log out</span>}
         </SidebarMenuButton>
       </SidebarFooter>
     </Sidebar>

@@ -40,10 +40,12 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-function DashboardRoute({ children, roles }: { children: React.ReactNode; roles?: string[] }) {
+import { UserRole } from "@/lib/types";
+
+function DashboardRoute({ children, roles }: { children: React.ReactNode; roles?: UserRole[] }) {
   return (
     <ProtectedRoute>
-      <DashboardLayout requiredRoles={roles as any}>{children}</DashboardLayout>
+      <DashboardLayout requiredRoles={roles}>{children}</DashboardLayout>
     </ProtectedRoute>
   );
 }

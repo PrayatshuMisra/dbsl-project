@@ -1,7 +1,7 @@
 import { Notification } from '@/lib/types';
 import { mockNotifications } from '@/data/mock/notifications';
 
-let notifications = [...mockNotifications];
+const notifications = [...mockNotifications];
 const delay = (ms = 300) => new Promise(r => setTimeout(r, ms));
 
 export const notificationService = {

@@ -25,3 +25,4 @@ export const courseService = {
     courses = courses.filter(c => c.course_id !== id);
   },
 };
+

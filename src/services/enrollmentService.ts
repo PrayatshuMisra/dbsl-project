@@ -1,7 +1,7 @@
 import { Enrollment, GradeValue } from '@/lib/types';
 import { mockEnrollments } from '@/data/mock/enrollments';
 
-let enrollments = [...mockEnrollments];
+const enrollments = [...mockEnrollments];
 const delay = (ms = 300) => new Promise(r => setTimeout(r, ms));
 
 export const enrollmentService = {
