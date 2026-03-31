@@ -1,0 +1,28 @@
+import { Enrollment } from '@/lib/types';
+
+export const mockEnrollments: Enrollment[] = [
+  { enrollment_id: 'ENR001', student_id: 'STU001', course_id: 'CRS001', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'A', remarks: 'Excellent performance' },
+  { enrollment_id: 'ENR002', student_id: 'STU001', course_id: 'CRS002', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'A-', remarks: '' },
+  { enrollment_id: 'ENR003', student_id: 'STU001', course_id: 'CRS003', enrollment_date: '2025-08-16', approval_status: 'approved', grade: 'B+', remarks: '' },
+  { enrollment_id: 'ENR004', student_id: 'STU001', course_id: 'CRS012', enrollment_date: '2025-08-20', approval_status: 'pending', grade: null, remarks: '' },
+  { enrollment_id: 'ENR005', student_id: 'STU002', course_id: 'CRS003', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'A+', remarks: 'Outstanding' },
+  { enrollment_id: 'ENR006', student_id: 'STU002', course_id: 'CRS004', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'A', remarks: '' },
+  { enrollment_id: 'ENR007', student_id: 'STU002', course_id: 'CRS001', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'B', remarks: '' },
+  { enrollment_id: 'ENR008', student_id: 'STU003', course_id: 'CRS005', enrollment_date: '2025-01-12', approval_status: 'approved', grade: 'B+', remarks: '' },
+  { enrollment_id: 'ENR009', student_id: 'STU003', course_id: 'CRS006', enrollment_date: '2025-01-12', approval_status: 'approved', grade: 'A-', remarks: '' },
+  { enrollment_id: 'ENR010', student_id: 'STU004', course_id: 'CRS001', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'B+', remarks: '' },
+  { enrollment_id: 'ENR011', student_id: 'STU004', course_id: 'CRS002', enrollment_date: '2025-08-15', approval_status: 'approved', grade: null, remarks: '' },
+  { enrollment_id: 'ENR012', student_id: 'STU004', course_id: 'CRS011', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'A', remarks: '' },
+  { enrollment_id: 'ENR013', student_id: 'STU005', course_id: 'CRS007', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'A-', remarks: '' },
+  { enrollment_id: 'ENR014', student_id: 'STU005', course_id: 'CRS006', enrollment_date: '2025-08-16', approval_status: 'rejected', grade: null, remarks: 'Prerequisite not met' },
+  { enrollment_id: 'ENR015', student_id: 'STU006', course_id: 'CRS008', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'B', remarks: '' },
+  { enrollment_id: 'ENR016', student_id: 'STU007', course_id: 'CRS009', enrollment_date: '2025-08-15', approval_status: 'approved', grade: null, remarks: '' },
+  { enrollment_id: 'ENR017', student_id: 'STU007', course_id: 'CRS001', enrollment_date: '2025-08-20', approval_status: 'pending', grade: null, remarks: '' },
+  { enrollment_id: 'ENR018', student_id: 'STU008', course_id: 'CRS006', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'C+', remarks: '' },
+  { enrollment_id: 'ENR019', student_id: 'STU009', course_id: 'CRS010', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'A', remarks: '' },
+  { enrollment_id: 'ENR020', student_id: 'STU010', course_id: 'CRS001', enrollment_date: '2025-08-20', approval_status: 'pending', grade: null, remarks: '' },
+  { enrollment_id: 'ENR021', student_id: 'STU010', course_id: 'CRS012', enrollment_date: '2025-08-20', approval_status: 'pending', grade: null, remarks: '' },
+  { enrollment_id: 'ENR022', student_id: 'STU011', course_id: 'CRS003', enrollment_date: '2025-08-15', approval_status: 'approved', grade: 'B-', remarks: '' },
+  { enrollment_id: 'ENR023', student_id: 'STU012', course_id: 'CRS005', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'A-', remarks: '' },
+  { enrollment_id: 'ENR024', student_id: 'STU001', course_id: 'CRS011', enrollment_date: '2025-01-10', approval_status: 'approved', grade: 'A+', remarks: 'Top of class' },
+];
