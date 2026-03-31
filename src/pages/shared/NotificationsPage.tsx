@@ -17,20 +17,22 @@ export default function NotificationsPage() {
   const [filter, setFilter] = useState<'all' | 'unread'>('all');
 
   useEffect(() => {
-    notificationService.getNotifications(user?.id).then(setNotifications);
+    if (user?.role && user?.id) {
+      notificationService.getNotifications(user.role, user.id).then(setNotifications);
+    }
   }, [user]);
 
-  const filtered = filter === 'unread' ? notifications.filter(n => !n.read) : notifications;
+  const filtered = filter === 'unread' ? notifications.filter(n => !n.is_read) : notifications;
 
   const markAsRead = async (id: string) => {
     await notificationService.markAsRead(id);
-    setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
+    setNotifications(prev => prev.map(n => n.notification_id === id ? { ...n, is_read: true } : n));
   };
 
   const markAllAsRead = async () => {
-    if (user) {
-      await notificationService.markAllAsRead(user.id);
-      setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+    if (user?.role && user?.id) {
+      await notificationService.markAllAsRead(user.role, user.id);
+      setNotifications(prev => prev.map(n => ({ ...n, is_read: true })));
     }
   };
 
@@ -48,14 +50,14 @@ export default function NotificationsPage() {
         {filtered.map((n, i) => {
           const Icon = typeIcons[n.type];
           return (
-            <motion.div key={n.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
-              <Card className={cn('rounded-2xl transition-colors cursor-pointer', !n.read && 'border-primary/30 bg-primary/5')} onClick={() => markAsRead(n.id)}>
+            <motion.div key={n.notification_id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
+              <Card className={cn('rounded-2xl transition-colors cursor-pointer', !n.is_read && 'border-primary/30 bg-primary/5')} onClick={() => markAsRead(n.notification_id)}>
                 <CardContent className="flex items-start gap-4 p-4">
                   <div className={cn('mt-0.5 rounded-xl p-2', `bg-${n.type}/10`)}><Icon className={cn('h-4 w-4', typeColors[n.type])} /></div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <p className="font-medium text-sm">{n.title}</p>
-                      {!n.read && <span className="h-2 w-2 rounded-full bg-primary" />}
+                      {!n.is_read && <span className="h-2 w-2 rounded-full bg-primary" />}
                     </div>
                     <p className="text-sm text-muted-foreground mt-0.5">{n.message}</p>
                     <p className="text-xs text-muted-foreground mt-1">{new Date(n.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
